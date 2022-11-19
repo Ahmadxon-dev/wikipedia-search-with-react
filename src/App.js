@@ -1,23 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import Form from "./Components/Form";
+import {useState} from "react";
+import wiki_API from "./config";
+import SearchList from "./Components/SearchList";
 
 function App() {
+  const [input, setInput] = useState('');
+  const [data,setData] = useState([])
+  const submithandler =  (e) =>{
+    e.preventDefault()
+    setInput('')
+  };
+  const searchHandler = (text) => {
+      fetch(wiki_API+text)
+          .then(response=>response.json())
+          .then(data=> setData(data.query.search))
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Form  searchHandler={searchHandler} submithandler={submithandler} input={input} setInput={setInput} />
+      <SearchList data={data} />
     </div>
   );
 }

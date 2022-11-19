@@ -36,3 +36,24 @@
     transform: rotate(360deg);
   }
 }
+.searchitem{
+  border: 5px solid black;
+}
+.searchitem p{
+  width: 25rem;
+  text-align: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+.searchitem a:nth-child(1){
+  font-size: 25px;
+  font-weight: bold;
+  text-decoration: none;
+}
+.a2{
+  color: #216628;
+}
+.input{
+  width: 30%;
+  height: 5%;
+}
